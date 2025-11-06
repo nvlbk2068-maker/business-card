@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наталья Гоматина - Бухгалтер-аутсорсер</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(180deg, #e8f4f8 0%, #d9ecf5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .card-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 15px 50px rgba(0, 100, 120, 0.15);
+            max-width: 520px;
+            width: 100%;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(0, 100, 120, 0.25);
+        }
+
+        /* Header с морской волной */
+        .card-header {
+            background: linear-gradient(135deg, #0a7a8c 0%, #1b9db0 50%, #2ba8c0 100%);
+            padding: 50px 35px 45px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid #d4af37;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: white;
+            padding: 6px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            border: 4px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .name {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .position {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.2px;
+        }
+
+        /* Основной контент */
+        .card-content {
+            padding: 45px 35px;
+            background: white;
+        }
+
+        /* Контактная информация */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0a7a8c 0%, #1b9db0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(10, 122, 140, 0.25);
+        }
+
+        .contact-info {
+            flex: 1;
+            padding-top: 4px;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: #0a7a8c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .contact-value a:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        /* Разделитель */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d9ecf5, transparent);
+            margin: 25px 0;
+        }
+
+        /* Социальные сети */
+        .social-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .social-title {
+            display: block;
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0a7a8c 0%, #1b9db0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(10, 122, 140, 0.25);
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 12px 30px rgba(10, 122, 140, 0.4);
+            background: linear-gradient(135deg, #1b9db0 0%, #2ba8c0 100%);
+        }
+
+        /* Footer */
+        .card-footer {
+            background: linear-gradient(180deg, #e8f4f8 0%, #d9ecf5 100%);
+            padding: 25px 35px;
+            text-align: center;
+            border-top: 1px solid #d0e8f0;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #666;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+        }
+
+        .gold-accent {
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .card-container {
+                border-radius: 20px;
+            }
+
+            .card-header {
+                padding: 40px 25px 35px;
+                border-bottom: 3px solid #d4af37;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 20px;
+                border: 3px solid rgba(255, 255, 255, 0.4);
+            }
+
+            .name {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+
+            .position {
+                font-size: 15px;
+            }
+
+            .card-content {
+                padding: 35px 25px;
+            }
+
+            .contact-section {
+                gap: 18px;
+                margin-bottom: 25px;
+            }
+
+            .contact-item {
+                gap: 15px;
+            }
+
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .contact-value {
+                font-size: 15px;
+            }
+
+            .card-footer {
+                padding: 20px 25px;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
+        }
+
+        /* Анимация при загрузке */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-container {
+            animation: slideIn 0.7s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <!-- Заголовок с фото -->
+        <div class="card-header">
+            <div class="logo">
+                <img src="natalia.jpg" alt="Наталья Гоматина">
+            </div>
+            <h1 class="name">Наталья Гоматина</h1>
+            <p class="position">Бухгалтер-аутсорсер</p>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="card-content">
+            <!-- Контактная информация -->
+            <div class="contact-section">
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-info">
+                        <span class="contact-label">Электронная почта</span>
+                        <div class="contact-value">
+                            <a href="mailto:n.vl@bk.ru">n.vl@bk.ru</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Разделитель -->
+            <div class="divider"></div>
+
+            <!-- Социальные сети -->
+            <div class="social-section">
+                <span class="social-title">Свяжитесь со мной</span>
+                <div class="social-links">
+                    <a href="https://t.me/Natalia_Gomatina" class="social-link" title="Телеграм">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.328-.373-.115l-6.869 4.332-2.97-.924c-.645-.213-.658-.645.135-.96l11.566-4.461c.54-.203 1.01.122.84.936z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <div class="card-footer">
+            <p class="footer-text">© 2025 | <span class="gold-accent">30 лет с бизнесом. Надёжный партнер</span></p>
+        </div>
+    </div>
+</body>
+</html>
