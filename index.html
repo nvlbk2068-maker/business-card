@@ -195,6 +195,7 @@
             display: flex;
             gap: 16px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .social-link {
@@ -236,6 +237,31 @@
         .gold-accent {
             color: #d4af37;
             font-weight: 700;
+        }
+
+        /* Кнопка презентации */
+        .presentation-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0a7a8c 0%, #1b9db0 100%);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(10, 122, 140, 0.25);
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .presentation-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(10, 122, 140, 0.4);
+            background: linear-gradient(135deg, #1b9db0 0%, #2ba8c0 100%);
         }
 
         /* Адаптивность */
@@ -353,6 +379,7 @@
                         </svg>
                     </a>
                 </div>
+                <a href="https://nvlbk2068-maker.github.io/presentation" class="presentation-button" target="_blank">📊 Открыть презентацию</a>
             </div>
         </div>
 
